@@ -9,6 +9,7 @@ const userRoutes = require('./routes/users');
 app.use(cors());
 app.use(express.json());
 
+
 // Routes
 app.use('users', userRoutes);
 
