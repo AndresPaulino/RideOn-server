@@ -33,7 +33,7 @@ router.post('/register', (req, res) => {
     });
 });
 
-// ## POST /api/users/login
+// ## POST /login
 // -   Generates and responds a JWT for the user to use for future authorization.
 // -   Expected body: { email, password }
 // -   Response format: { token: "JWT_TOKEN_HERE" }
@@ -52,11 +52,11 @@ router.post('/login', (req, res) => {
       const isPasswordCorrect = bcrypt.compareSync(password, user.password);
 
       if (!isPasswordCorrect) {
-        return res.status(400).send('Invalid password');
+        return res.status(400).send('Invalid email or password');
       }
 
       // Create a token
-      const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_KEY, { expiresIn: '24h' });
+      const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '24h' });
 
       res.json({ token });
     })
