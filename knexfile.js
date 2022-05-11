@@ -1,10 +1,12 @@
+require('dotenv').config();
+
 module.exports = {
   client: 'mysql',
   connection: {
-    host: '127.0.0.1',
+    host: 'localhost',
     user: 'root',
     password: process.env.SERVER_PWD,
-    database: 'RideOn',
+    database: 'users',
     charset: 'utf8',
   },
 };
