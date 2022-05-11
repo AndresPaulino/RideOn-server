@@ -4,13 +4,13 @@ const knex = require('knex')(require('../knexfile'));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// ## POST /api/users/register
+// ## POST /register
 // -   Creates a new user.
-// -   Expected body: { first_name, last_name, phone, address, email, password }
+// -   Expected body: { user_name, email, password }
 router.post('/register', (req, res) => {
-  const { first_name, last_name, email, password } = req.body;
+  const { username, email, password } = req.body;
 
-  if (!first_name || !last_name || !email || !password) {
+  if (!username || !email || !password) {
     return res.status(400).send('Please enter the required fields.');
   }
 
@@ -18,8 +18,7 @@ router.post('/register', (req, res) => {
 
   // Create the new user
   const newUser = {
-    first_name: first_name,
-    last_name: last_name,
+    user_name: username,
     email: email,
     password: hashedPassword,
   };
