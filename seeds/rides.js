@@ -15,12 +15,12 @@ const ridesData = [
   },
   {
     id: 2,
-    profileImg:
+    profile_img:
       'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     author: 'Hector Hernandez',
     ride_title: 'The Hammocks to Hog Heaven',
     ride_date: 'May 20, 2022',
-    address: '78392 Off St',
+    address1: '78392 Off St',
     address2: 'Miami, FL 33198',
     ride_participants: 14,
     ride_time: '9:00 AM',
@@ -29,12 +29,12 @@ const ridesData = [
   },
   {
     id: 3,
-    profileImg:
+    profile_img:
       'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
     author: 'Hector Hernandez',
     ride_title: 'Miami to Ft. Lauderdale',
     ride_date: 'May 27, 2022',
-    address: '123 Rear St',
+    address1: '123 Rear St',
     address2: 'Miami, FL 33198',
     ride_participants: 7,
     ride_time: '10:00 AM',
