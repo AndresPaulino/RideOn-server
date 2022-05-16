@@ -31,7 +31,7 @@ const ridesData = [
     id: 3,
     profile_img:
       'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-    author: 'Hector Hernandez',
+    author: 'Henry Johnson',
     ride_title: 'Miami to Ft. Lauderdale',
     ride_date: 'May 27, 2022',
     address1: '123 Rear St',

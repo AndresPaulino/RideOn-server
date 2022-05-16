@@ -65,7 +65,7 @@ router.post('/login', (req, res) => {
     });
 });
 
-// ## GET /users/current
+// ## GET /current
 // -   Gets information about the currently logged in user.
 // -   If no valid JWT is provided, this route will respond with 401 Unauthorized.
 // -   Expected headers: { Authorization: "Bearer JWT_TOKEN_HERE" }
