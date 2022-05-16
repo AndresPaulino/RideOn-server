@@ -79,7 +79,7 @@ router.get('/current', (req, res) => {
   const authToken = req.headers.authorization.split(' ')[1];
 
   // Verify the token
-  jwt.verify(authToken, process.env.JWT_KEY, (err, decoded) => {
+  jwt.verify(authToken, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).send('Invalid auth token');
     }
