@@ -9,6 +9,7 @@ const ridesRoutes = require('./routes/rides');
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 
 // Routes

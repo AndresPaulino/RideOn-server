@@ -15,17 +15,17 @@ router.get('/rides', (req, res) => {
 
 // Post Ride
 router.post('/rides', (req, res) => {
-  const { id, user_name, profile_img, title, address, date, time, description, from,  } = req.body;
+  const { id, user_name, profile_img, ride_title, ride_address, ride_date, ride_time, ride_description, ride_from } = req.body;
   const newRide = {
     user_name,
       profile_img,
-      title,
-      address,
-      date,
-      time,
-      description,
-      from,
-      to,
+      ride_title,
+    address1: ride_address,
+      address2: ride_address,
+      ride_date,
+      ride_time,
+      ride_description,
+      ride_from,
       id,
         
   };
@@ -34,8 +34,8 @@ router.post('/rides', (req, res) => {
     .then(() => {
       res.status(201).send('Ride created successfully');
     })
-    .catch(() => {
-      res.status(400).send('Failed to create ride');
+    .catch((err) => {
+      res.status(400).send(err);
     });
 });
 

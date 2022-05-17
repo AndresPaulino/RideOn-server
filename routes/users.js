@@ -21,6 +21,7 @@ router.post('/register', (req, res) => {
     user_name: username,
     email: email,
     password: hashedPassword,
+    profile_img: 'http://localhost:8080/images/default_profile.png',
   };
 
   knex('users')
