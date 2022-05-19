@@ -15,7 +15,7 @@ router.get('/rides', (req, res) => {
 
 // Post Ride
 router.post('/rides', (req, res) => {
-  const { id, user_name, profile_img, ride_title, ride_address, ride_date, ride_time, ride_description, ride_from } =
+  const { user_name, profile_img, ride_title, ride_address, ride_date, ride_time, ride_description, ride_from } =
     req.body;
   const newRide = {
     user_name,
