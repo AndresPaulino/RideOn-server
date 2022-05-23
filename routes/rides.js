@@ -85,4 +85,16 @@ router.post('/rides/:id/comments', (req, res) => {
     });
 });
 
+// Get ride comments
+router.get('/rides/:id/comments', (req, res) => {
+  knex('ride_comments')
+    .where({ ride_id: req.params.id })
+    .then((comments) => {
+      res.json(comments);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
