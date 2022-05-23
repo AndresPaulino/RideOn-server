@@ -13,6 +13,19 @@ router.get('/rides', (req, res) => {
     });
 });
 
+// Get Ride by ID
+router.get('/rides/:id', (req, res) => {
+  knex('rides')
+    .where({ id: req.params.id })
+    .first()
+    .then((ride) => {
+      res.json(ride);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 // Post Ride
 router.post('/rides', (req, res) => {
   const { user_name, profile_img, ride_title, ride_address, ride_date, ride_time, ride_description, ride_from } =
@@ -46,6 +59,26 @@ router.post('/rides/add-participants', (req, res) => {
     .increment('ride_participants', 1)
     .then(() => {
       res.status(201).send('Ride created successfully');
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+// post ride comment
+router.post('/rides/comment/:id', (req, res) => {
+  const { user_name, profile_img, user_comment, ride_id, timeStamp } = req.body;
+  const newComment = {
+    user_name,
+    profile_img,
+    user_comment,
+    ride_id,
+    timeStamp,
+  };
+  knex('ride_comments')
+    .insert(newComment)
+    .then(() => {
+      res.status(201).send('Comment created successfully');
     })
     .catch((err) => {
       res.status(400).send(err);
