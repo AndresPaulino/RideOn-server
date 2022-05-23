@@ -66,14 +66,14 @@ router.post('/rides/add-participants', (req, res) => {
 });
 
 // post ride comment
-router.post('/rides/comment/:id', (req, res) => {
-  const { user_name, profile_img, user_comment, ride_id, timeStamp } = req.body;
+router.post('/rides/:id/comments', (req, res) => {
+  const { user_name, profile_img, user_comment, ride_id, created } = req.body;
   const newComment = {
     user_name,
     profile_img,
     user_comment,
     ride_id,
-    timeStamp,
+    created,
   };
   knex('ride_comments')
     .insert(newComment)
