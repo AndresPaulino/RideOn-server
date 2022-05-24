@@ -18,6 +18,22 @@ router.post('/myrides', (req, res) => {
     });
 });
 
+// delete saved ride from user id
+router.delete('/myrides/:user_id/:ride_id', (req, res) => {
+  console.log(req.params);
+
+  knex('user_rides')
+    .where({ user_id: req.params.user_id, ride_id: req.params.ride_id })
+    .del()
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 // display saved rides from user id
 router.get('/myrides/:user_id', (req, res) => {
   console.log(req.params);
@@ -25,11 +41,7 @@ router.get('/myrides/:user_id', (req, res) => {
   knex('user_rides')
     .where({ user_id: req.params.user_id })
     .join('rides', 'user_rides.ride_id', 'rides.id')
-    .select(
-      'rides.ride_title',
-      'rides.ride_date',
-      'rides.id',
-    )
+    .select('rides.ride_title', 'rides.ride_date', 'rides.id')
     .then((rides) => {
       console.log(rides);
       res.json(rides);
@@ -40,5 +52,20 @@ router.get('/myrides/:user_id', (req, res) => {
     });
 });
 
+// check if user has saved ride
+router.get('/myrides/:user_id/:ride_id', (req, res) => {
+  console.log(req.params);
+
+  knex('user_rides')
+    .where({ user_id: req.params.user_id, ride_id: req.params.ride_id })
+    .then((rides) => {
+      console.log(rides);
+      res.json(rides);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;

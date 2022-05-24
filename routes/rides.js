@@ -58,7 +58,21 @@ router.post('/rides/add-participants', (req, res) => {
     .where({ id })
     .increment('ride_participants', 1)
     .then(() => {
-      res.status(201).send('Ride created successfully');
+      res.status(201).send('Participant count incremented');
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+// Decrement participant count
+router.post('/rides/remove-participants', (req, res) => {
+  const { id } = req.body;
+  knex('rides')
+    .where({ id })
+    .decrement('ride_participants', 1)
+    .then(() => {
+      res.status(201).send('Participant count decremented');
     })
     .catch((err) => {
       res.status(400).send(err);
