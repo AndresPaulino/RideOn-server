@@ -41,7 +41,7 @@ router.get('/myrides/:user_id', (req, res) => {
   knex('user_rides')
     .where({ user_id: req.params.user_id })
     .join('rides', 'user_rides.ride_id', 'rides.id')
-    .select('rides.ride_title', 'rides.ride_date', 'rides.id')
+    .select('rides.ride_title', 'rides.ride_date', 'rides.id', 'rides.lat', 'rides.lng')
     .then((rides) => {
       console.log(rides);
       res.json(rides);

@@ -28,7 +28,7 @@ router.get('/rides/:id', (req, res) => {
 
 // Post Ride
 router.post('/rides', (req, res) => {
-  const { user_name, profile_img, ride_title, address1, address2, ride_date, ride_time, ride_description, ride_from } =
+  const { user_name, profile_img, ride_title, address1, address2, ride_date, ride_time, ride_description, ride_from, lat, lng } =
     req.body;
   const newRide = {
     user_name,
@@ -40,6 +40,8 @@ router.post('/rides', (req, res) => {
     ride_time,
     ride_description,
     ride_from,
+    lat,
+    lng,
   };
   knex('rides')
     .insert(newRide)
