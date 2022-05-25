@@ -28,14 +28,14 @@ router.get('/rides/:id', (req, res) => {
 
 // Post Ride
 router.post('/rides', (req, res) => {
-  const { user_name, profile_img, ride_title, ride_address, ride_date, ride_time, ride_description, ride_from } =
+  const { user_name, profile_img, ride_title, address1, address2, ride_date, ride_time, ride_description, ride_from } =
     req.body;
   const newRide = {
     user_name,
     profile_img,
     ride_title,
-    address1: ride_address,
-    address2: ride_address,
+    address1: address1,
+    address2: address2,
     ride_date,
     ride_time,
     ride_description,
