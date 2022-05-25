@@ -96,4 +96,21 @@ router.get('/current', (req, res) => {
   });
 });
 
+// Update user profile image
+router.post('/update-profile-img', (req, res) => {
+  const { id, profile_img } = req.body;
+
+  knex('users')
+    .where({ id })
+    .update({ profile_img })
+    .then(() => {
+      res.status(201).send('Profile image updated successfully');
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+
+
 module.exports = router;
