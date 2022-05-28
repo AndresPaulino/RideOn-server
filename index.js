@@ -18,20 +18,6 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(fileUpload());
 
-// File upload
-app.post('/upload', authenticator, (req, res) => {
-  const imageFile = req.files['image-field'];
-  const fileName = imageFile.name;
-  const uploadPath = `images/${fileName}`;
-  imageFile.mv(`${__dirname}/public/${uploadPath}`, function (err) {
-    if (err) {
-      return res.status(500).send(err.message);
-    }
-    return res.send({ path: uploadPath });
-  });
-});
-
-
 // Routes
 app.use('/', userRoutes);
 app.use('/', ridesRoutes);
