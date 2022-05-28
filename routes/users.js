@@ -98,16 +98,15 @@ router.get('/current', (req, res) => {
 });
 
 // Update user profile image
-router.post('/upload/:user_id', (req, res) => {
+router.put('/upload/:user_id', (req, res) => {
   const { user_id } = req.params;
   const { profile_img } = req.body;
 
-  // Update the user's profile image
   knex('users')
     .where({ id: user_id })
-    .update({ profile_img })
+    .update({ profile_img: profile_img })
     .then(() => {
-      res.status(200).send('Profile image updated');
+      res.status(200).send('Profile image updated');  
     })
     .catch((err) => {
       res.status(400).send(err);
