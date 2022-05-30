@@ -3,7 +3,6 @@ const router = express.Router();
 const knex = require('knex')(require('../knexfile'));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const fileUpload = require('express-fileupload');
 
 // ## POST /register
 // -   Creates a new user.
@@ -112,5 +111,30 @@ router.put('/upload/:user_id', (req, res) => {
       res.status(400).send(err);
     });
 });
+
+// Update user setings and profile
+router.put('/settings/:user_id', (req, res) => {
+  const { user_id } = req.params;
+  const { first_name, last_name, city, bike_model } = req.body;
+
+  console.log(req.body);
+
+  knex('users')
+    .where({ id: user_id })
+    .update({
+      first_name: first_name,
+      last_name: last_name,
+      bike_model: bike_model,
+      city: city,
+    })
+    .then(() => {
+      res.status(200).send('Settings updated');
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+
 
 module.exports = router;
