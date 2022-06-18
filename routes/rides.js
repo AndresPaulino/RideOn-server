@@ -2,11 +2,6 @@ const express = require('express');
 const router = express.Router();
 const knex = require('knex')(require('../knexfile'));
 
-// Get Rides
-router.get('/rides', (req, res) => {
-  
-});
-
 // Get Ride by ID
 router.get('/rides/:id', (req, res) => {
   knex('rides')
